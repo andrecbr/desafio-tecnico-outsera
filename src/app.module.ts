@@ -1,19 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './controllers/app/app.controller';
 import { MovieModule } from './modules/movie/movie.module';
-import { MovieEntity } from './entities/movie/movie.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { dataSourceOptions } from './data-source';
 
 @Module({
-  imports: [
-    MovieModule,
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: ':memory:',
-      synchronize: true,
-      entities: [MovieEntity],
-    }),
-  ],
+  imports: [MovieModule, TypeOrmModule.forRoot(dataSourceOptions)],
   controllers: [AppController],
   providers: [],
 })
