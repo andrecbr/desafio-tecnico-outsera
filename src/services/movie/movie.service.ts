@@ -80,7 +80,7 @@ export class MovieService {
           previousWin: acumulador,
           followingWin: item,
         });
-        return acumulador;
+        return item;
       });
     });
 
