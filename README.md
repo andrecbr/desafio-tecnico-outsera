@@ -57,5 +57,6 @@ Através de aplicativos como Postman ou Insomnia é possível executar as chamad
 
 - Autenticação e guarda de rotas
 - Validar parametros de entrada dos endpoints
+- Tratamento de exceções
 - Implementar Swagger
 - Criação de .env (Dotenv) para evitar hardcoding
