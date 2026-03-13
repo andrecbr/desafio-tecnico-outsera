@@ -3,5 +3,5 @@ export class CreateMovieDto {
   title: string;
   studios: string;
   producers: string;
-  winner: string;
+  winner: boolean;
 }

@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('movie')
 export class MovieEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,5 +18,5 @@ export class MovieEntity {
   producers: string;
 
   @Column()
-  winner: string;
+  winner: boolean;
 }
