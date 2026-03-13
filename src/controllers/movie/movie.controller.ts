@@ -1,10 +1,20 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { MovieService } from '../../services/movie/movie.service';
 import { CreateMovieDto } from 'src/dtos/movie/create-movie.dto';
+import { MovieEntity } from 'src/entities/movie/movie.entity';
+import { UpdateMovieDto } from 'src/dtos/movie/update-movie.dto';
 
 @Controller('movies')
 export class MovieController {
-  // Create Read Update Delete
   constructor(private readonly movieService: MovieService) {}
 
   @Post()
@@ -13,12 +23,22 @@ export class MovieController {
   }
 
   @Get()
-  getMovies(): string {
+  getMovies(): Promise<MovieEntity[]> {
     return this.movieService.getMovies();
   }
 
   @Get(':id')
   getMovie(@Query() id: number) {
     return this.movieService.getMovie(id);
+  }
+
+  @Put(':id')
+  updateMovie(@Param('id') id: number, @Body() updateMovieDto: UpdateMovieDto) {
+    return this.movieService.update(id, updateMovieDto);
+  }
+
+  @Delete(':id')
+  deleteMovie(@Param('id') id: number) {
+    return this.movieService.delete(id);
   }
 }
