@@ -1,13 +1,20 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './controllers/app/app.controller';
-import { AppService } from './services/app/app.service';
-import { MovieController } from './controllers/movie/movie.controller';
-import { MovieService } from './services/movie/movie.service';
-import { MongooseModule } from '@nestjs/mongoose';
+import { MovieModule } from './modules/movie/movie.module';
+import { MovieEntity } from './entities/movie/movie.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/moviedb')],
-  controllers: [AppController, MovieController],
-  providers: [AppService, MovieService],
+  imports: [
+    MovieModule,
+    TypeOrmModule.forRoot({
+      type: 'sqlite',
+      database: ':memory:',
+      synchronize: true,
+      entities: [MovieEntity],
+    }),
+  ],
+  controllers: [AppController],
+  providers: [],
 })
 export class AppModule {}
