@@ -6,8 +6,11 @@ import Papa from 'papaparse';
 
 export default class MovieSeeder implements Seeder {
   public async run(dataSource: DataSource): Promise<any> {
+    const repository = dataSource.getRepository(MovieEntity);
+    const count = await repository.count();
+    if (count > 0) return;
     const movies = this.parseMoviesCSV();
-    await dataSource.getRepository(MovieEntity).insert(movies);
+    await repository.insert(movies);
   }
 
   private parseMoviesCSV(): Partial<MovieEntity>[] {
