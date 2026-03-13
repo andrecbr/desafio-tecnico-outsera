@@ -2,12 +2,15 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { SeederOptions } from 'typeorm-extension';
 import { MovieEntity } from './entities/movie/movie.entity';
 
-export const dataSourceOptions: DataSourceOptions & SeederOptions = {
+export const dataSourceOptions: DataSourceOptions = {
   type: 'sqlite',
-  database: ':memory:',
+  database: 'movies.sqlite',
   synchronize: true,
   entities: [MovieEntity],
-  seeds: ['src/database/seeds/**/*{.ts,.js}'],
+};
+
+export const seederOptions: SeederOptions = {
+  seeds: [`${__dirname}/database/seeds/**/*{.ts,.js}`],
 };
 
 export const dataSource = new DataSource(dataSourceOptions);
