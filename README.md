@@ -7,7 +7,7 @@ Foi utilizado o padrão de *seeders* para realizar a conversão e importação p
 O banco de dados utilizado foi o SQLite (SGBDR)
 
 
-## Baixando os arquivos
+## Clonando o repositório
 
 ```bash
 $ git clone https://github.com/andrecbr/desafio-tecnico-outsera.git
@@ -42,34 +42,16 @@ $ pnpm run test:e2e
 
 ## Endpoints
 
-Através de aplicativos como Postman ou Imnsonia é possível executar as chamadas dos endpoints (CRUD)
+Através de aplicativos como Postman ou Insomnia é possível executar as chamadas dos endpoints (CRUD)
 
-```makefile
-# retorna a lista completa de filmes
-$ GET /movies http://localhost:3000/movies
-
-# retorna um filme específico através do id
-$ GET /movies/:id http://localhost:3000/movies/1
-
-# retorna produtor de maior intervalo entre dois prêmios consecutivos e dois prêmios mais rápidos
-$ GET /movies/awards http://localhost:3000/movies/awards # endpoint principal do desafio
-
-# cria um filme manualmente
-# {
-#    "title": "Teste",
-#    "year": 2023,
-#    "studios": "Studio SA",
-#    "producers": "ProductionCompany SA",
-#    "winner": "Yes"
-# }
-$ POST /movies http://localhost:3000/movies
-
-# atualiza um filme específico manualmente através do id
-$ PUT /movies/:id http://localhost:3000/movies/1
-
-# apaga um filme específico pelo id
-$ DELETE /movies/:id http://localhost:3000/movies/1
-```
+| Método | Endpoint         | Descrição                                 |
+|--------|------------------|-------------------------------------------|
+| GET    | /movies          | Lista completa dos filmes                 |
+| GET    | /movies/:id      | Retorna um filme específico através do id |
+| GET    | /movies/awards   | Endpoint principal do desafio retorna produtor de maior intervalo entre dois prêmios consecutivos e dois prêmios mais rápidos |
+| POST   | /movies          | Cria um filme manualmente                 |
+| PUT    | /movies/:id      | Atualiza um filme específico              |
+| DELETE | /movies/:id      | Deleta um filme específico                |
 
 ## TODO
 
