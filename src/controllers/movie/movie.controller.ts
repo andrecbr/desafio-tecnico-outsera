@@ -41,4 +41,9 @@ export class MovieController {
   deleteMovie(@Param('id') id: number) {
     return this.movieService.delete(id);
   }
+
+  @Get('awards')
+  getMoviesList() {
+    return this.movieService.getAwards();
+  }
 }
