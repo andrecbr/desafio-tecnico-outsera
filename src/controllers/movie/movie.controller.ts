@@ -27,6 +27,11 @@ export class MovieController {
     return this.movieService.getMovies();
   }
 
+  @Get('awards')
+  getMoviesList() {
+    return this.movieService.getAwards();
+  }
+
   @Get(':id')
   getMovie(@Query() id: number) {
     return this.movieService.getMovie(id);
@@ -40,10 +45,5 @@ export class MovieController {
   @Delete(':id')
   deleteMovie(@Param('id') id: number) {
     return this.movieService.delete(id);
-  }
-
-  @Get('awards')
-  getMoviesList() {
-    return this.movieService.getAwards();
   }
 }
