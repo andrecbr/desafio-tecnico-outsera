@@ -4,9 +4,9 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 import { MovieService } from '../../services/movie/movie.service';
 import { CreateMovieDto } from 'src/dtos/movie/create-movie.dto';
@@ -33,7 +33,7 @@ export class MovieController {
   }
 
   @Get(':id')
-  getMovie(@Query() id: number) {
+  getMovie(@Param('id', ParseIntPipe) id: number) {
     return this.movieService.getMovie(id);
   }
 
