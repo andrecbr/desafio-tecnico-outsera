@@ -40,9 +40,6 @@ export class MovieService {
   ): Record<string, number[]> {
     return winners.reduce(
       (acumulador, valorAtual) => {
-        //console.log('Acumulador:', acumulador);
-        //console.log('ValorAtual:', valorAtual);
-
         const produtoresLinha = valorAtual.producers.split(/, | and /);
 
         produtoresLinha.forEach((produtor) => {
