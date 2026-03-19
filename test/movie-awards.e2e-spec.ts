@@ -28,7 +28,7 @@ describe('Movie Awards (e2e)', () => {
     await app.close();
   });
 
-  it('GET /movies/awards deve retornar o formato esperado', async () => {
+  it('GET /movies/awards - should return expected format', async () => {
     const response = await request(app.getHttpServer() as any)
       .get('/movies/awards')
       .expect(200);
@@ -39,7 +39,7 @@ describe('Movie Awards (e2e)', () => {
     expect(Array.isArray(response.body.max)).toBe(true);
   });
 
-  it('GET /movies/awards deve retornar o produtor com menor intervalo entre prêmios consecutivos', async () => {
+  it('GET /movies/awards - should return producer with shortest interval between consecutive awards', async () => {
     const response = await request(app.getHttpServer() as any)
       .get('/movies/awards')
       .expect(200);
@@ -63,7 +63,7 @@ describe('Movie Awards (e2e)', () => {
     });
   });
 
-  it('GET /movies/awards deve retornar o produtor com maior intervalo entre prêmios consecutivos', async () => {
+  it('GET /movies/awards - should return producer with longest interval between consecutive awards', async () => {
     const response = await request(app.getHttpServer() as any)
       .get('/movies/awards')
       .expect(200);
