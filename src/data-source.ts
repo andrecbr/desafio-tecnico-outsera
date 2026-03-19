@@ -4,7 +4,7 @@ import { MovieEntity } from './entities/movie/movie.entity';
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'sqlite',
-  database: 'movies.sqlite',
+  database: ':memory:',
   synchronize: true,
   entities: [MovieEntity],
 };
